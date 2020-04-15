@@ -200,7 +200,7 @@ async def help(message: types.Message):
     chat_id = types.Chat.get_current().id
     bot_username = (await bot.me).username
     bot_link = f"https://t.me/{bot_username}"
-    text = f"Привет! Добро пожаловать в чат квиза UrOk!\nОтветы бот принимает после знака "/", либо нажатием на кнопку А, Б, В, Г \nПроверить статистику чата: \n/stat\nПроверить свой баланс(в ЛС): \n/balance\nПригласить друга: \n{bot_link}\nХэштег в соцсетях: \n#quizurok\nFacebook: \nhttps://www.facebook.com/urokhelsinki/\nДонаты на добро: \n+358504723648\n(MobilePay, Revolut)"
+    text = f"Привет! Добро пожаловать в чат квиза UrOk!\nОтветы бот принимает после знака /, либо нажатием на кнопку А, Б, В, Г \nПроверить статистику чата: \n/stat\nПроверить свой баланс(в ЛС): \n/balance\nПригласить друга: \n{bot_link}\nХэштег в соцсетях: \n#quizurok\nFacebook: \nhttps://www.facebook.com/urokhelsinki/\nДонаты на добро: \n+358504723648\n(MobilePay, Revolut)"
     await bot.send_message(chat_id, text)
 
 # @dp.message_handler(commands=["more"])
