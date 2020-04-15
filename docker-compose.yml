@@ -10,6 +10,8 @@ services:
       - 5432:5432
     env_file:
       - ".env"
+    volumes:
+      - database-data:/var/lib/postgresql/data/ # persist data even if container shuts down
 #    network_mode: "host"
 
   adminer:
@@ -32,3 +34,6 @@ services:
 
     env_file:
       - ".env"
+
+volumes:
+  database-data: # named volumes can be managed easier using docker-compose
