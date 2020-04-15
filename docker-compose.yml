@@ -26,7 +26,7 @@ services:
       context: .
     volumes:
       - .:/src
-    command: python3 app.py
+    command: bash -c "source .py3env/bin/activate && python3 app.py"
     restart: always
     network_mode: "host"
 
