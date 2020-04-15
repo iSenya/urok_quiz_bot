@@ -26,7 +26,7 @@ services:
       context: .
     volumes:
       - .:/src
-    command: bash -c "python app.py && python scheduler.py"
+    command: python app.py
     restart: always
     network_mode: "host"
 

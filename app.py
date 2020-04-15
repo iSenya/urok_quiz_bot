@@ -2,7 +2,8 @@ import asyncio
 from aiogram import executor
 
 from config import admin_id
-from load_all import bot, create_db
+from load_all import bot
+from sql import create_db
 
 
 # Подождем пока запустится база данных...
@@ -17,4 +18,4 @@ async def on_shutdown(dp):
 if __name__ == '__main__':
     from handlers import dp
 
-    executor.start_polling(dp, on_shutdown=on_shutdown)
+    executor.start_polling(dp, on_shutdown=on_shutdown, on_startup=on_startup)
