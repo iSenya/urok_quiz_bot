@@ -2,7 +2,7 @@ import asyncio
 import asyncpg
 import logging
 
-from config import host, PG_PASS, PG_USER
+from config import host, POSTGRES_PASSWORD, POSTGRES_USER
 
 logging.basicConfig(format=u'%(filename)s [LINE:%(lineno)d] #%(levelname)-8s [%(asctime)s]  %(message)s',
                     level=logging.INFO)
@@ -12,16 +12,16 @@ async def create_db():
     create_db_command = open("postgres.sql", "r").read()
 
     logging.info("Connecting to database...")
-    conn: asyncpg.Connection = await asyncpg.connect(user=PG_USER,
-                                                     password=PG_PASS,
+    conn: asyncpg.Connection = await asyncpg.connect(user=POSTGRES_USER,
+                                                     password=POSTGRES_PASSWORD,
                                                      host=host)
     await conn.execute(create_db_command)
     await conn.close()
 
 
 async def create_pool():
-    return await asyncpg.create_pool(user=PG_USER,
-                                     password=PG_PASS,
+    return await asyncpg.create_pool(user=POSTGRES_USER,
+                                     password=POSTGRES_PASSWORD,
                                      host=host)
 
 
