@@ -6,7 +6,7 @@ from aiogram import Dispatcher
 from aiogram.contrib.fsm_storage.memory import MemoryStorage
 
 from config import TOKEN
-from sql import create_pool
+from sql import create_pool, create_db
 
 # from aiogram.contrib.fsm_storage.redis import RedisStorage2
 
