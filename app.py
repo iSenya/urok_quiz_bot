@@ -3,14 +3,14 @@ from aiogram import executor
 
 from config import admin_id
 from load_all import bot
-from sql import create_db
+# from sql import create_db
 
 
 # Подождем пока запустится база данных...
 
 async def on_startup(dp):
     await asyncio.sleep(10)
-    await create_db()
+    # await create_db()
 
 async def on_shutdown(dp):
     await bot.close()

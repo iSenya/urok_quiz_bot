@@ -8,15 +8,15 @@ logging.basicConfig(format=u'%(filename)s [LINE:%(lineno)d] #%(levelname)-8s [%(
                     level=logging.INFO)
 
 
-async def create_db():
-    create_db_command = open("postgres.sql", "r").read()
+#async def create_db():
+#    create_db_command = open("postgres.sql", "r").read()
 
-    logging.info("Connecting to database...")
-    conn: asyncpg.Connection = await asyncpg.connect(user=POSTGRES_USER,
-                                                     password=POSTGRES_PASSWORD,
-                                                     host=host)
-    await conn.execute(create_db_command)
-    await conn.close()
+#    logging.info("Connecting to database...")
+#    conn: asyncpg.Connection = await asyncpg.connect(user=POSTGRES_USER,
+#                                                     password=POSTGRES_PASSWORD,
+#                                                    host=host)
+#    await conn.execute(create_db_command)
+#    await conn.close()
 
 
 async def create_pool():
@@ -25,6 +25,6 @@ async def create_pool():
                                      host=host)
 
 
-if __name__ == '__main__':
-    loop = asyncio.get_event_loop()
-    loop.run_until_complete(create_db())
+# if __name__ == '__main__':
+#     loop = asyncio.get_event_loop()
+ #   loop.run_until_complete(create_db())
