@@ -95,7 +95,7 @@ class DBCommands:
 
     async def get_random_question(self):
         row = await self.pool.fetchrow(
-            self.GET_RANDOM_QUESTION, datetime.utcnow() - timedelta(minutes=1)
+            self.GET_RANDOM_QUESTION, datetime.utcnow() - timedelta(weeks=4)
         )
         return row
 
@@ -261,11 +261,10 @@ async def answer(message: Message):
     is_answered = await db.check_points(False)
     await bot.delete_message(chat_id, message.message_id)
     username = message.from_user.username
-    first_name = message.from_user.first_name
-    last_name = message.from_user.last_name
+    full_name = message.from_user.full_name
     name = username
     if username is None:
-        name == first_name + " " + last_name
+        name = full_name
     if is_answered:
         await bot.send_message(user_id, text1 + text2)
     elif (
