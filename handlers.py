@@ -219,9 +219,16 @@ async def stat(message: Message):
 
     for index, user in enumerate(top_10):
         if user["username"] is None:
-            text += f"{index+1}. {user['first_name'] + ' ' + user['last_name']}: {user['balance']}\n"
+            if user["first_name"] is None and user["last_name"] is not None:
+                text += f"{index+1}. {user['last_name']}: {user['balance']}\n"
+            elif user["first_name"] is not None and user["last_name"] is None:
+                text += f"{index+1}. {user['first_name']}: {user['balance']}\n"
+            elif user["first_name"] is not None and user["last_name"] is not None:
+                text += f"{index+1}. {user['first_name']+ ' ' + user['last_name']}: {user['balance']}\n"           
         else:
             text += f"{index+1}. @{user['username']}: {user['balance']}\n"
+
+        
 
     await bot.send_message(chat_id, text)
 
