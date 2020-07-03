@@ -95,7 +95,7 @@ class DBCommands:
 
     async def get_random_question(self):
         row = await self.pool.fetchrow(
-            self.GET_RANDOM_QUESTION, datetime.utcnow() - timedelta(weeks=4)
+            self.GET_RANDOM_QUESTION, datetime.utcnow() - timedelta(days=90)
         )
         return row
 
