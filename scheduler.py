@@ -16,7 +16,10 @@ async def answer():
         text = f"Правильный ответ на предыдущий вопрос: {answer}"
         await bot.send_message(CHAT_ID, text)
         if row["topic"] == "ЕГЭ":
-            await bot.edit_message_reply_markup(row["chat_id"], row["message_id"])
+            try:
+                await bot.edit_message_reply_markup(row["chat_id"], row["message_id"])
+            except:
+                pass
         
 
 async def pub():
