@@ -31,7 +31,7 @@ class DBCommands:
     CHECK_BALANCE = "SELECT SUM(points) AS balance FROM answers WHERE user_id = $1"
     MORE = "UPDATE users SET balance=balance+$1 WHERE user_id = $2"
     CHECK_ANSWER = "SELECT q.answer FROM questions AS q INNER JOIN publications AS p ON q.quest_id = p.quest_id ORDER BY p.pubdate DESC LIMIT 1"
-    GET_RANDOM_QUESTION = "SELECT body, quest_id, topic FROM questions WHERE quest_id NOT IN (SELECT quest_id FROM answers WHERE pubdate > $1) ORDER BY RANDOM() LIMIT 1"
+    GET_RANDOM_QUESTION = "SELECT body, quest_id, topic FROM questions WHERE quest_id NOT IN (SELECT quest_id FROM publications) ORDER BY RANDOM() LIMIT 1"
     SAVE_PUBLISHED_QUESTION = "INSERT INTO publications(chat_id, quest_id, pubdate, message_id) VALUES ($1, $2, current_timestamp, $3)"
     ADD_POINTS = "INSERT INTO answers(chat_id, user_id, quest_id, points, pubdate) VALUES ($1, $2, $3, $4, current_timestamp)"
     CHECK_POINTS_EGE = (
@@ -95,7 +95,7 @@ class DBCommands:
 
     async def get_random_question(self):
         row = await self.pool.fetchrow(
-            self.GET_RANDOM_QUESTION, datetime.utcnow() - timedelta(days=180)
+            self.GET_RANDOM_QUESTION)
         )
         return row
 
