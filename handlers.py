@@ -7,7 +7,6 @@ from config import admin_id
 from filters import *
 from datetime import datetime, timedelta
 from load_all import bot, dp, db
-
 from fuzzywuzzy import fuzz
 from fuzzywuzzy import process
 
@@ -95,7 +94,7 @@ class DBCommands:
 
     async def get_random_question(self):
         row = await self.pool.fetchrow(
-            self.GET_RANDOM_QUESTION)
+            self.GET_RANDOM_QUESTION
         )
         return row
 
